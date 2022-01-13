@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  notebooks:
+    image: jupyter/scipy-notebook
+    env_file:
+      - ".env.local"
+    volumes:
+      - ./work:/home/jovyan/work
+      - ./local-packages:/home/modules
+      - ./scripts:/usr/local/bin/before-notebook.d/
+      - ./requirements.txt:/requirements.txt
+    ports:
+      - 8888:8888
